@@ -175,12 +175,14 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graphics\Color.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Math\Utils.cpp" />
     <ClCompile Include="src\Math\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Math\Utils.h" />
     <ClInclude Include="src\Math\Vector2D.h" />

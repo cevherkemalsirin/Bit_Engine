@@ -1,7 +1,8 @@
 #include "Vector2D.h"
 #include "Utils.h"
 
- const Vector2D Vector2D::ZERO;
+const Vector2D Vector2D::ZERO{ 0 };
+
 Vector2D::Vector2D(float value):x(value), y(value)
 {
 }
@@ -129,24 +130,6 @@ Vector2D Vector2D::ReflectedVector(const Vector2D& normal) const
 	return (2 * -this->DotVector(normal)) + *this;
 }
 
-void Vector2D::RotateVector(float angle, const Vector2D& point)
-{
-	float sinA = sinf(angle);
-	float cosA = cosf(angle);
-	Vector2D thisVector = *this;
-
-	thisVector -= point;
-
-	float rotX = thisVector.GetX() * cosA - thisVector.GetY() * sinA;
-	float rotY = thisVector.GetY() * cosA + thisVector.GetX() * sinA;
-
-	thisVector.SetX(rotX);
-	thisVector.SetY(rotY);
-
-	*this = thisVector + point;
-
-}
-
 Vector2D Vector2D::RotatedVector(float angle, const Vector2D& point) const
 {
 	float sinA = sinf(angle);
@@ -163,6 +146,12 @@ Vector2D Vector2D::RotatedVector(float angle, const Vector2D& point) const
 
 	return thisVector + point;
 }
+
+void Vector2D::RotateVector(float angle, const Vector2D& point)
+{
+	*this = this->RotatedVector(angle, point);
+}
+
 
 
 

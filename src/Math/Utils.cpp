@@ -7,7 +7,6 @@ bool math::FEqual(float x, float y)
 
 bool math::FEqualGreater(float x, float y)
 {
-	bool a = FEqual(x, y) || x > y;
 	return FEqual(x, y) || x > y;
 }
 

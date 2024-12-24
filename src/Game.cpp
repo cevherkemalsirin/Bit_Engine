@@ -35,7 +35,7 @@ bool Game::Initialize(std::string_view gameTitle, int width, int height)
 	SDLSurface = SDL_GetWindowSurface(SDLWindow);
    
 
-	// SDL_SetWindowFullscreen(SDLWindow, SDL_WINDOW_FULLSCREEN);
+	SDL_SetWindowFullscreen(SDLWindow, SDL_WINDOW_FULLSCREEN);
 	isRunning = true;
 	return isRunning;
 
