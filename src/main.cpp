@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 {
     Screen thescreen;
     thescreen.Init(224, 288, 10);
-    thescreen.Draw(112, 144, Color::Yellow());
+    thescreen.Draw(112, 144, Color::Orange());
     thescreen.RenderScreen();
    
 
