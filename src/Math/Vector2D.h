@@ -56,8 +56,21 @@ public:
 	float DistanceTo(const Vector2D& target) const;
 	//Dot Product
 	float Dot(const Vector2D& vec2) const;
-	//ProjectionVector aka dot product vector
+	/* 
+	     A
+	    /|
+	   / |
+	  /__|____B
+
+	  A.B = cos# * |A| * |B|
+	  if B is an unit vector it becomes
+	  A.B = cos# * |A|
+	  cos# is  shadow / |A|
+	  then A.B = shadow
+	  shadow * unit vector of B becomes shadow vector which is projected vector
+	  */
 	Vector2D DotVector(const Vector2D& vec2) const;
+
 	//Get angles between 2 vectors
 	/*
 		a.b = |a| * |b| * cosA

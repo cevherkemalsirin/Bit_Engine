@@ -5,6 +5,8 @@
 #include "Graphics/Screen.h"
 #include "stdint.h"
 #include "SDL.h"
+#include "Graphics/Shapes/Line2D.h"
+
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -14,6 +16,10 @@ int main(int argc, char* argv[])
     thescreen.Draw(112, 144, Color::Orange());
     thescreen.RenderScreen();
    
+	Line2D line1(3, 5, 14, 12);
+	Vector2D point(6, 14);
+
+	line1.ClosestPoint(point);
 
 	SDL_Event sdlEvent;
 	bool running = true;
