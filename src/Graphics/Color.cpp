@@ -10,7 +10,11 @@ Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 
 void Color::SetRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	color_ = SDL_MapRGBA(format_, r, g, b, a);
+	if (format_)
+	{
+		color_ = SDL_MapRGBA(format_, r, g, b, a);
+	}
+
 }
 
 void Color::SetRed(uint8_t red)

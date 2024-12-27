@@ -1,5 +1,6 @@
 #include "Screen.h"
 #include "Vector2D.h"
+#include "Shapes/Line2D.h"
 #include "SDL.h"
 
 Screen::Screen():window_(nullptr),renderer_(nullptr),height_(0),width_(0)
@@ -28,10 +29,10 @@ void Screen::Init(uint32_t w, uint32_t h, uint8_t zoom)
 		//return nullptr;
 		return;
 	}
-	height_ = h;
 	width_ = w;
-	
-	window_ = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, height_ * zoom, width_ * zoom, 0);
+	height_ = h;
+
+	window_ = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width_ * zoom, height_ * zoom,0 /*SDL_WINDOW_FULLSCREEN_DESKTOP*/);
 	renderer_ = SDL_CreateRenderer(window_, 0, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	if (!window_ || !renderer_)
@@ -77,13 +78,38 @@ void Screen::Draw(const Vector2D& point, const Color& color)
 {
 	if (window_ && renderer_)
 	{
-		backBuffer_.SetPixel(point.GetX(), point.GetY(), color);
+		Draw(point.GetX(), point.GetY(), color);
+	}
+}
+
+void Screen::Draw(const Line2D& line, const Color& color)
+{
+	if (window_ && renderer_)
+	{ 
+		float x =  line.GetPointStart().GetX();
+		float y = line.GetPointStart().GetY();
+		float dx = std::roundf(line.GetPointEnd().GetX() - line.GetPointStart().GetX());
+		float dy = std::roundf(line.GetPointEnd().GetY() - line.GetPointStart().GetY());
+
+		int steps = static_cast<int>(std::max(std::abs(dx), std::abs(dy)));
+
+		float xstep = dx / steps;
+		float ystep = dy / steps;
+	    
+		Draw(x,y,color);
+		for (int i = 1; i < steps; ++i)
+		{
+			x += xstep;
+			y += ystep;
+			Draw(std::roundf(x), std::roundf(y));
+		}
+
 	}
 }
 
 
-void Screen::ClearScreen()
+void Screen::ClearScreen(const Color & color)
 {
-	SDL_SetRenderDrawColor(renderer_, clearColor_.GetRed(), clearColor_.GetGreen(), clearColor_.GetBlue(), clearColor_.GetAlpha());
+	SDL_SetRenderDrawColor(renderer_,color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
 	SDL_RenderClear(renderer_);
 }

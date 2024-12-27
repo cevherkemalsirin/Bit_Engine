@@ -3,6 +3,7 @@
 #include "ScreenBuffer.h"
 
 class Vector2D;
+class Line2D;
 struct SDL_Window;
 struct SDL_Renderer;
 
@@ -15,7 +16,7 @@ class Screen
 	SDL_Window* window_;
 	SDL_Renderer* renderer_;
 
-	void ClearScreen();
+	void ClearScreen(const Color& color = Color::Black());
 	
 public:
 	Screen();
@@ -24,12 +25,12 @@ public:
 	inline uint32_t GetHeight() const { return height_;}
 	inline uint32_t Getwidth() const { return width_;}
 	inline void SetClearColor(const Color& color) { clearColor_ = color;}
-	void Init(uint32_t w, uint32_t h, uint8_t zoom);
+	void Init(uint32_t w, uint32_t h, uint8_t zoom = 3);
 	void RenderScreen();
 
-	void Draw(int x, int y, const Color& color);
-	void Draw(const Vector2D& point, const Color& color);
-
-
+	void Draw(int x, int y, const Color& color = Color::White());
+	void Draw(const Vector2D& point, const Color& color = Color::White());
+	//DDA algorithm more info at https://tinyurl.com/2r79nsnh
+	void Draw(const Line2D& line, const Color& color = Color::White());
 };
 

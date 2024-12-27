@@ -12,14 +12,11 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     Screen thescreen;
-    thescreen.Init(224, 288, 10);
-    thescreen.Draw(112, 144, Color::Orange());
+    thescreen.Init(224, 288, 2);
+	//thescreen.SetClearColor(Color::Orange());
+	thescreen.Draw(Line2D(Vector2D(0, 0), Vector2D(224, 288)));
     thescreen.RenderScreen();
    
-	Line2D line1(3, 5, 14, 12);
-	Vector2D point(6, 14);
-
-	line1.ClosestPoint(point);
 
 	SDL_Event sdlEvent;
 	bool running = true;
