@@ -46,6 +46,12 @@ float Line2D::Length() const
 	return pointStart_.DistanceTo(pointEnd_);
 }
 
+void Line2D::Rotate(float angle, const Vector2D& point)
+{
+	pointStart_.RotateVector(angle, point);
+	pointEnd_.RotateVector(angle, point);
+}
+
 Vector2D Line2D::ClosestPoint(const Vector2D& point, bool isSegment)
 {
 	Vector2D A = point - pointStart_;

@@ -14,14 +14,19 @@ int main(int argc, char* argv[])
     Screen thescreen;
     thescreen.Init(224, 288, 2);
 	//thescreen.SetClearColor(Color::Orange());
-	thescreen.Draw(Line2D(Vector2D(0, 0), Vector2D(224, 288)));
-    thescreen.RenderScreen();
-   
-
+	Line2D line(Vector2D(100,50), Vector2D(150, 50));
+	float rotateAngle = 0.005f;
+	thescreen.Draw(line);
+	thescreen.RenderScreen();
+	Vector2D point = Vector2D(105,50);
 	SDL_Event sdlEvent;
 	bool running = true;
 	while (running)
 	{
+		line.Rotate(rotateAngle, point);
+		thescreen.Draw(line);
+		thescreen.RenderScreen();
+
 		while (SDL_PollEvent(&sdlEvent))
 		{
 			switch (sdlEvent.type)

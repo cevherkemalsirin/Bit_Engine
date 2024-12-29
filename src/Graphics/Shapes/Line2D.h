@@ -20,6 +20,7 @@ public:
 	Vector2D Midpoint() const;
 	float Slope() const;
 	float Length() const;
+	void Rotate(float angle, const Vector2D & point);
 	/*
 		B *
 
