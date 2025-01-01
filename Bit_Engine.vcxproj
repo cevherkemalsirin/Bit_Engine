@@ -183,6 +183,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Math\Utils.cpp" />
     <ClCompile Include="src\Math\Vector2D.cpp" />
+    <ClCompile Include="src\Graphics\Shapes\Star2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Shapes\Line2D.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Math\Utils.h" />
     <ClInclude Include="src\Math\Vector2D.h" />
+    <ClInclude Include="src\Graphics\Shapes\Star2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

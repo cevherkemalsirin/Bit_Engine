@@ -1,6 +1,7 @@
 #include "Screen.h"
 #include "Vector2D.h"
 #include "Shapes/Line2D.h"
+#include "Shapes/Star2D.h"
 #include "SDL.h"
 
 Screen::Screen():window_(nullptr),renderer_(nullptr),height_(0),width_(0)
@@ -101,9 +102,17 @@ void Screen::Draw(const Line2D& line, const Color& color)
 		{
 			x += xstep;
 			y += ystep;
-			Draw(std::roundf(x), std::roundf(y));
+			Draw(std::roundf(x), std::roundf(y),color);
 		}
 
+	}
+}
+
+void Screen::Draw(const Star2D& star, const Color& color)
+{
+	for (Line2D line : star.GetLines())
+	{
+		Draw(line, color);
 	}
 }
 

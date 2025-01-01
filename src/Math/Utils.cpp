@@ -14,3 +14,8 @@ bool math::FEqualSmaller(float x, float y)
 {
 	return FEqual(x, y) || x < y;
 }
+
+float math::DegreeToRadian(float degree)
+{
+	return degree * (PI/180.0f);
+}

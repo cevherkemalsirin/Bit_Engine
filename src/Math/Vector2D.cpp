@@ -153,9 +153,6 @@ void Vector2D::RotateVector(float angle, const Vector2D& point)
 }
 
 
-
-
-
 //FRIENDS
 std::ostream& operator<<(std::ostream& os, const Vector2D& vec)
 {

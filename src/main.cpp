@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Math/Vector2D.h"
+#include "Shapes/Star2D.h"
 #include "Game.h"
 #include "Graphics/Color.h"
 #include "Graphics/Screen.h"
@@ -12,21 +13,28 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     Screen thescreen;
-    thescreen.Init(224, 288, 2);
+    thescreen.Init(224, 288, 3);
 	//thescreen.SetClearColor(Color::Orange());
-	Line2D line(Vector2D(100,50), Vector2D(150, 50));
+	Line2D line(Vector2D(112,40), Vector2D(112, 90));
 	float rotateAngle = 0.005f;
-	thescreen.Draw(line);
+	
+	Star2D star(Vector2D(112, 144), 7);
+	thescreen.Draw(star, Color::Green());
+	line.Rotate(0.63,line.GetPointStart());
+	thescreen.Draw(line, Color::Purple());
 	thescreen.RenderScreen();
+
+
 	Vector2D point = Vector2D(105,50);
+
 	SDL_Event sdlEvent;
 	bool running = true;
 	while (running)
 	{
-		line.Rotate(rotateAngle, point);
+		/*line.Rotate(rotateAngle, point);
 		thescreen.Draw(line);
-		thescreen.RenderScreen();
 
+	   */
 		while (SDL_PollEvent(&sdlEvent))
 		{
 			switch (sdlEvent.type)
