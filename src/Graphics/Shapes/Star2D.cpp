@@ -11,7 +11,6 @@ Star2D::Star2D(const Vector2D& center, uint8_t spikeNum, float centerSpikeDist, 
 	CreateStar();
 }
 
-
 void Star2D::CreateStar()
 {
 	//first line of the star is; left line part of the top first pike
@@ -35,7 +34,6 @@ void Star2D::CreateStar()
 			//rotate the line by the amount of spike inner angle
 			if (flipFlop)
 			{
-
 				nextLine.Rotate(-outerAngle, nextLine.GetPointEnd());
 			}
 			//rotate the line by the amount of spike outer degree
