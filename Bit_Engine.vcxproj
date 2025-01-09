@@ -175,6 +175,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graphics\Shapes\Shape.cpp" />
     <ClCompile Include="src\Graphics\Shapes\Line2D.cpp" />
     <ClCompile Include="src\Graphics\Screen.cpp" />
     <ClCompile Include="src\Graphics\ScreenBuffer.cpp" />
@@ -184,8 +185,10 @@
     <ClCompile Include="src\Math\Utils.cpp" />
     <ClCompile Include="src\Math\Vector2D.cpp" />
     <ClCompile Include="src\Graphics\Shapes\Star2D.cpp" />
+    <ClCompile Include="src\Graphics\Shapes\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graphics\Shapes\Shape.h" />
     <ClInclude Include="src\Graphics\Shapes\Line2D.h" />
     <ClInclude Include="src\Graphics\Screen.h" />
     <ClInclude Include="src\Graphics\ScreenBuffer.h" />
@@ -194,6 +197,7 @@
     <ClInclude Include="src\Math\Utils.h" />
     <ClInclude Include="src\Math\Vector2D.h" />
     <ClInclude Include="src\Graphics\Shapes\Star2D.h" />
+    <ClInclude Include="src\Graphics\Shapes\Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
