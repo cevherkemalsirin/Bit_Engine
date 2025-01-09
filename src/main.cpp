@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Math/Vector2D.h"
 #include "Shapes/Star2D.h"
+#include "Shapes/Triangle.h"
 #include "Game.h"
 #include "Graphics/Color.h"
 #include "Graphics/Screen.h"
@@ -13,7 +14,9 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     Screen thescreen;
-    thescreen.Init(224, 288, 3);
+    thescreen.Init(224, 288, 1);
+	/*
+	
 	//thescreen.SetClearColor(Color::Orange());
 	Line2D line(Vector2D(112,40), Vector2D(112, 90));
 	float rotateAngle = 0.005f;
@@ -22,10 +25,14 @@ int main(int argc, char* argv[])
 	thescreen.Draw(star, Color::Green());
 	line.Rotate(0.63,line.GetPointStart());
 	thescreen.Draw(line, Color::Purple());
-	thescreen.RenderScreen();
-
 
 	Vector2D point = Vector2D(105,50);
+
+	*/
+	Triangle2D tri(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
+	cout << tri.GetPoints().size();
+	thescreen.Draw(tri);
+	thescreen.RenderScreen();
 
 	SDL_Event sdlEvent;
 	bool running = true;

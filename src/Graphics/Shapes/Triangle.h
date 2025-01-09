@@ -1,11 +1,11 @@
 #pragma once
 #include "Shape.h"
-class Triangle : public Shape
+class Triangle2D : public Shape
 {
 	
 public:
-	Triangle();
-	Triangle(const Vector2D& p0, const Vector2D& p1, const Vector2D& p2);
+	Triangle2D();
+	Triangle2D(const Vector2D& p0, const Vector2D& p1, const Vector2D& p2);
 
 	inline void SetP0(const Vector2D& p0) { GetPoints()[0] = p0; }
 	inline void SetP1(const Vector2D& p1) { GetPoints()[1] = p1; }

@@ -1,7 +1,9 @@
 #include "Screen.h"
+#include <vector>
 #include "Vector2D.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Star2D.h"
+#include "Shapes/Triangle.h"
 #include "SDL.h"
 
 Screen::Screen():window_(nullptr),renderer_(nullptr),height_(0),width_(0)
@@ -114,6 +116,17 @@ void Screen::Draw(const Star2D& star, const Color& color)
 	{
 		Draw(line, color);
 	}
+}
+
+void Screen::Draw(const Triangle2D& triangle, const Color& color)
+{
+	std::vector<Vector2D> points = triangle.GetPoints();
+	Line2D lineP0_P1(triangle.GetP0(), triangle.GetP1());
+	Line2D lineP1_P2(triangle.GetP1(), triangle.GetP2());
+	Line2D lineP2_P0(triangle.GetP2(), triangle.GetP0());
+	Draw(lineP0_P1, color);
+	Draw(lineP1_P2, color);
+	Draw(lineP2_P0, color);
 }
 
 
