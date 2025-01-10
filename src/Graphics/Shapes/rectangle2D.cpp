@@ -1,4 +1,5 @@
 #include "Rectangle2D.h"
+#include "Line2D.h"
 
 Rectangle2D::Rectangle2D():Rectangle2D(Vector2D::ZERO, Vector2D::ZERO)
 {
@@ -45,6 +46,20 @@ float Rectangle2D::GetHeight() const
 float Rectangle2D::GetWidth() const
 {
 	return GetBottomRightPoint().GetX() - GetTopLeftPoint().GetX() + 1;
+}
+
+std::vector<Line2D> Rectangle2D::GetLines() const
+{
+	Line2D line1(GetPoints()[0], GetPoints()[1]);
+	Line2D line2(GetPoints()[1], GetPoints()[2]);
+	Line2D line3(GetPoints()[2], GetPoints()[3]);
+	Line2D line4(GetPoints()[3], GetPoints()[0]);
+	std::vector<Line2D> lines;
+	lines.push_back(line1);
+	lines.push_back(line2);
+	lines.push_back(line3);
+	lines.push_back(line4);
+	return lines;
 }
 
 float Rectangle2D::Area() const

@@ -1,6 +1,8 @@
 #pragma once
 #include "Shape.h"
 
+class Line2D;
+
 class Rectangle2D : public Shape
 {
 
@@ -19,7 +21,9 @@ public:
 
 	float GetHeight() const;
 	float GetWidth() const;
+	std::vector<Line2D> GetLines() const;
 	float Area() const;
+
 
 	bool Intersects(const Rectangle2D& targetRect) const;
 	bool ContainsPoint(const Vector2D & point) const;

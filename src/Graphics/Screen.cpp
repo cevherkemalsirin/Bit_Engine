@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Star2D.h"
+#include "Shapes/rectangle2D.h"
 #include "Shapes/Triangle.h"
 #include "SDL.h"
 
@@ -127,6 +128,12 @@ void Screen::Draw(const Triangle2D& triangle, const Color& color)
 	Draw(lineP0_P1, color);
 	Draw(lineP1_P2, color);
 	Draw(lineP2_P0, color);
+}
+
+void Screen::Draw(const Rectangle2D& rectangle, const Color& color)
+{
+	rectangle
+
 }
 
 
