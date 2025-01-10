@@ -13,5 +13,6 @@ public:
 	inline virtual std::vector<Vector2D> GetPoints() const { return points_; }
 	void MoveBy(const Vector2D& offset);
 	~Shape() {};
+
 };
 
