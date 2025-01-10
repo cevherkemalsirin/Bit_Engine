@@ -1,7 +1,7 @@
 #include "ScreenBuffer.h"
 #include "SDL.h"
 
-ScreenBuffer::ScreenBuffer(const ScreenBuffer& buffer)
+ScreenBuffer::ScreenBuffer(const ScreenBuffer& buffer): surface_(nullptr)
 {
 	if (buffer.surface_)
 	{

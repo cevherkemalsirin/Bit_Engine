@@ -42,5 +42,6 @@ public:
 	void Draw(const Rectangle2D& rectangle, const Color& color = Color::White());
 	*/
 	void Draw(const ILineShape* shape, const Color& color = Color::White());
+	
 };
 

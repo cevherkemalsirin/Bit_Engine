@@ -119,6 +119,8 @@ void Screen::Draw(const ILineShape* shape, const Color& color)
 		Draw(line, color);
 	}
 }
+
+
 /*
 void Screen::Draw(const Star2D& star, const Color& color)
 {

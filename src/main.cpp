@@ -29,8 +29,8 @@ int main(int argc, char* argv[])
 	Vector2D point = Vector2D(105,50);
 
 	*/
-	Triangle2D tri(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	cout << tri.GetPoints().size();
+	Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
+	cout << tri->GetPoints().size();
 	thescreen.Draw(tri);
 	thescreen.RenderScreen();
 
