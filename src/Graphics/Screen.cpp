@@ -123,12 +123,22 @@ void Screen::Draw(const ILineShape* shape, const Color& color)
 
 void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color)
 {
-	Vector2D firstEnd(circle.GetCenter().GetX() + circle.GetRadius(), circle.GetCenter().GetY());
-	Draw(firstEnd, color);
-	for (float i = 0.0f; i < 360.0f; i += drawingAngle / 360.0f)
+	float fullDegree = 360.0f;
+	float quarterDegree = fullDegree / 4.0f;
+	Vector2D rightEnd(circle.GetCenter().GetX() + circle.GetRadius(), circle.GetCenter().GetY());
+	Vector2D topEnd(circle.GetCenter().GetX(), circle.GetCenter().GetY() - circle.GetRadius());
+	Vector2D leftEnd(circle.GetCenter().GetX() - circle.GetRadius(), circle.GetCenter().GetY());
+	Vector2D bottomEnd(circle.GetCenter().GetX(), circle.GetCenter().GetY() + circle.GetRadius());
+	for (float i = 0.0f; i < quarterDegree; i += drawingAngle / fullDegree)
 	{
-		firstEnd.RotateVector(drawingAngle, circle.GetCenter());
-		Draw(firstEnd, color);
+		rightEnd.RotateVector(drawingAngle, circle.GetCenter());
+		topEnd.RotateVector(drawingAngle, circle.GetCenter());
+		leftEnd.RotateVector(drawingAngle, circle.GetCenter());
+		bottomEnd.RotateVector(drawingAngle, circle.GetCenter());
+		Draw(rightEnd, color);
+		Draw(topEnd, color);
+		Draw(leftEnd, color);
+		Draw(bottomEnd, color);
 	}
 }
 

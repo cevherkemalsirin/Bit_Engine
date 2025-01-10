@@ -15,7 +15,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     Screen thescreen;
-    thescreen.Init(224, 288, 1);
+    thescreen.Init(224, 288, 2);
 	/*
 	
 	//thescreen.SetClearColor(Color::Orange());
@@ -32,8 +32,8 @@ int main(int argc, char* argv[])
 	*/
 	Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
 	Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	Circle2D circ(Vector2D(112, 144), 10.0f);
-	thescreen.Draw(circ,1.0f);
+	Circle2D circ(Vector2D(112, 144), 50.0f);
+	thescreen.Draw(circ, 0.5f);
 	thescreen.RenderScreen();
 
 	SDL_Event sdlEvent;
