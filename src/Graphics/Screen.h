@@ -8,6 +8,7 @@ class Star2D;
 class Triangle2D;
 class Rectangle2D;
 class ILineShape;
+class Circle2D;
 struct SDL_Window;
 struct SDL_Renderer;
 
@@ -42,6 +43,6 @@ public:
 	void Draw(const Rectangle2D& rectangle, const Color& color = Color::White());
 	*/
 	void Draw(const ILineShape* shape, const Color& color = Color::White());
-	
+	void Draw(const Circle2D& circle, float drawingAngle ,const Color& color = Color::White());
 };
 

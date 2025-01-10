@@ -5,6 +5,7 @@
 #include "Shapes/Line2D.h"
 #include "Shapes/Star2D.h"
 #include "Shapes/rectangle2D.h"
+#include "Shapes/Circle2D.h"
 #include "Shapes/Triangle.h"
 #include "SDL.h"
 
@@ -120,34 +121,17 @@ void Screen::Draw(const ILineShape* shape, const Color& color)
 	}
 }
 
-
-/*
-void Screen::Draw(const Star2D& star, const Color& color)
+void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color)
 {
-	for (Line2D line : star.GetLines())
+	Vector2D firstEnd(circle.GetCenter().GetX() + circle.GetRadius(), circle.GetCenter().GetY());
+	Draw(firstEnd, color);
+	for (float i = 0.0f; i < 360.0f; i += drawingAngle / 360.0f)
 	{
-		Draw(line, color);
+		firstEnd.RotateVector(drawingAngle, circle.GetCenter());
+		Draw(firstEnd, color);
 	}
 }
 
-void Screen::Draw(const Triangle2D& triangle, const Color& color)
-{
-	for (Line2D line : triangle.GetLines())
-	{
-
-	}
-}
-
-void Screen::Draw(const Rectangle2D& rectangle, const Color& color)
-{
-	for ( const auto & line : rectangle.GetLines())
-	{
-		Draw(line, color);
-	}
-
-}
-
-*/
 void Screen::ClearScreen(const Color & color)
 {
 	SDL_SetRenderDrawColor(renderer_,color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());

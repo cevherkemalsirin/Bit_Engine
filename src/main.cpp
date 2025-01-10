@@ -30,8 +30,9 @@ int main(int argc, char* argv[])
 
 	*/
 	Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
+	Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
 	cout << tri->GetPoints().size();
-	thescreen.Draw(tri);
+	thescreen.Draw(&tri2);
 	thescreen.RenderScreen();
 
 	SDL_Event sdlEvent;
