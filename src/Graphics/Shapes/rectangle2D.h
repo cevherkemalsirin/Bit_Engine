@@ -1,9 +1,10 @@
 #pragma once
 #include "Shape.h"
+#include "ILineShape.h"
 
 class Line2D;
 
-class Rectangle2D : public Shape
+class Rectangle2D : public Shape, public ILineShape
 {
 
 public:
@@ -21,7 +22,7 @@ public:
 
 	float GetHeight() const;
 	float GetWidth() const;
-	std::vector<Line2D> GetLines() const;
+	virtual std::vector<Line2D> GetLines() const override;
 	float Area() const;
 
 

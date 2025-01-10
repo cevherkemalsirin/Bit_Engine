@@ -2,6 +2,8 @@
 #include <vector>
 #include <Vector2D.h>
 
+class Line2D;
+
 class Shape
 {
 protected:

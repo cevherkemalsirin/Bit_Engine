@@ -1,6 +1,7 @@
 #include "Screen.h"
 #include <vector>
 #include "Vector2D.h"
+#include "Shapes/ILineShape.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Star2D.h"
 #include "Shapes/rectangle2D.h"
@@ -111,6 +112,14 @@ void Screen::Draw(const Line2D& line, const Color& color)
 	}
 }
 
+void Screen::Draw(const ILineShape* shape, const Color& color)
+{
+	for (const auto& line : shape->GetLines())
+	{
+		Draw(line, color);
+	}
+}
+/*
 void Screen::Draw(const Star2D& star, const Color& color)
 {
 	for (Line2D line : star.GetLines())
@@ -121,13 +130,10 @@ void Screen::Draw(const Star2D& star, const Color& color)
 
 void Screen::Draw(const Triangle2D& triangle, const Color& color)
 {
-	std::vector<Vector2D> points = triangle.GetPoints();
-	Line2D lineP0_P1(triangle.GetP0(), triangle.GetP1());
-	Line2D lineP1_P2(triangle.GetP1(), triangle.GetP2());
-	Line2D lineP2_P0(triangle.GetP2(), triangle.GetP0());
-	Draw(lineP0_P1, color);
-	Draw(lineP1_P2, color);
-	Draw(lineP2_P0, color);
+	for (Line2D line : triangle.GetLines())
+	{
+
+	}
 }
 
 void Screen::Draw(const Rectangle2D& rectangle, const Color& color)
@@ -139,7 +145,7 @@ void Screen::Draw(const Rectangle2D& rectangle, const Color& color)
 
 }
 
-
+*/
 void Screen::ClearScreen(const Color & color)
 {
 	SDL_SetRenderDrawColor(renderer_,color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());

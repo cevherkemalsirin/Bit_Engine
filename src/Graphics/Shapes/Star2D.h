@@ -2,10 +2,11 @@
 #include <stdint.h>
 #include <vector>
 #include <Vector2D.h>
+#include "ILineShape.h"
 
 class Line2D;
 
-class Star2D
+class Star2D: public ILineShape
 {
 	uint8_t numberOfSpikes_;
 	float centerSpikeDist_;
@@ -30,7 +31,7 @@ public:
 		float centerSpikeDist = 20.0f, 
 		float spikeLength = 30.0f);
 
-	inline std::vector<Line2D> GetLines() const { return lines_; }
 
+	virtual std::vector<Line2D> GetLines() const override { return lines_; }
 };
 

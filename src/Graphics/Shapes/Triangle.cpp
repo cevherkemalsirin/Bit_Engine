@@ -1,4 +1,5 @@
 #include "Triangle.h"
+#include "Line2D.h"
 #include "Utils.h"
 
 Triangle2D::Triangle2D():Triangle2D(Vector2D::ZERO, Vector2D::ZERO, Vector2D::ZERO)
@@ -10,6 +11,14 @@ Triangle2D::Triangle2D(const Vector2D& p0, const Vector2D& p1, const Vector2D& p
 	points_.push_back(p0);
 	points_.push_back(p1);
 	points_.push_back(p2);
+}
+
+std::vector<Line2D> Triangle2D::GetLines() const
+{
+	Line2D line1(GetP0(), GetP1());
+	Line2D line2(GetP1(), GetP2());
+	Line2D line3(GetP2(), GetP0());
+	return std::vector<Line2D>{line1,line2,line3};
 }
 
 Vector2D Triangle2D::GetCenter() const

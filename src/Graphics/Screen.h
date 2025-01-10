@@ -7,6 +7,7 @@ class Line2D;
 class Star2D;
 class Triangle2D;
 class Rectangle2D;
+class ILineShape;
 struct SDL_Window;
 struct SDL_Renderer;
 
@@ -35,8 +36,11 @@ public:
 	void Draw(const Vector2D& point, const Color& color = Color::White());
 	//DDA algorithm more info at https://tinyurl.com/2r79nsnh
 	void Draw(const Line2D& line, const Color& color = Color::White());
+	/*
 	void Draw(const Star2D& star, const Color& color = Color::White());
 	void Draw(const Triangle2D& triangle, const Color& color = Color::White());
 	void Draw(const Rectangle2D& rectangle, const Color& color = Color::White());
+	*/
+	void Draw(const ILineShape* shape, const Color& color = Color::White());
 };
 

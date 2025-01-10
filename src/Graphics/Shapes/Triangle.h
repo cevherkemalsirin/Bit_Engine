@@ -1,6 +1,8 @@
 #pragma once
 #include "Shape.h"
-class Triangle2D : public Shape
+#include "ILineShape.h"
+
+class Triangle2D : public Shape, public ILineShape
 {
 	
 public:
@@ -14,6 +16,8 @@ public:
 	inline  Vector2D GetP0() const { return GetPoints()[0]; }
 	inline  Vector2D GetP1() const { return GetPoints()[1]; }
 	inline  Vector2D GetP2() const { return GetPoints()[2]; }
+
+	virtual std::vector<Line2D> GetLines() const override;
 
 	virtual Vector2D GetCenter() const override;
 	float Area() const;

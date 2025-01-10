@@ -175,6 +175,8 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graphics\Shapes\Circle2D.cpp" />
+    <ClCompile Include="src\Graphics\Shapes\rectangle2D.cpp" />
     <ClCompile Include="src\Graphics\Shapes\Shape.cpp" />
     <ClCompile Include="src\Graphics\Shapes\Line2D.cpp" />
     <ClCompile Include="src\Graphics\Screen.cpp" />
@@ -188,6 +190,9 @@
     <ClCompile Include="src\Graphics\Shapes\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graphics\Shapes\ILineShape.h" />
+    <ClInclude Include="src\Graphics\Shapes\Circle2D.h" />
+    <ClInclude Include="src\Graphics\Shapes\rectangle2D.h" />
     <ClInclude Include="src\Graphics\Shapes\Shape.h" />
     <ClInclude Include="src\Graphics\Shapes\Line2D.h" />
     <ClInclude Include="src\Graphics\Screen.h" />
