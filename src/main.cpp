@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Graphics/Color.h"
 #include "Graphics/Screen.h"
+#include "Shapes/Circle2D.h"
 #include "stdint.h"
 #include "SDL.h"
 #include "Graphics/Shapes/Line2D.h"
@@ -31,8 +32,8 @@ int main(int argc, char* argv[])
 	*/
 	Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
 	Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	cout << tri->GetPoints().size();
-	thescreen.Draw(&tri2);
+	Circle2D circ(Vector2D(112, 144), 10.0f);
+	thescreen.Draw(circ,1.0f);
 	thescreen.RenderScreen();
 
 	SDL_Event sdlEvent;

@@ -3,7 +3,7 @@
 
 Circle2D::Circle2D(const Vector2D& center, float r):radius_(r)
 {
-	SetCenter(center);
+	points_.push_back(center);
 }
 
 bool Circle2D::Intersect(const Circle2D& otherCircle) const
