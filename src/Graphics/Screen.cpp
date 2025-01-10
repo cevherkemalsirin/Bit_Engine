@@ -132,7 +132,10 @@ void Screen::Draw(const Triangle2D& triangle, const Color& color)
 
 void Screen::Draw(const Rectangle2D& rectangle, const Color& color)
 {
-	rectangle
+	for ( const auto & line : rectangle.GetLines())
+	{
+		Draw(line, color);
+	}
 
 }
 
