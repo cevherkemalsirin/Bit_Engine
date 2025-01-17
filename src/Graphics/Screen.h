@@ -42,7 +42,7 @@ public:
 	void Draw(const Triangle2D& triangle, const Color& color = Color::White());
 	void Draw(const Rectangle2D& rectangle, const Color& color = Color::White());
 	*/
-	void Draw(const ILineShape* shape, const Color& color = Color::White());
-	void Draw(const Circle2D& circle, float drawingAngle ,const Color& color = Color::White());
+	void Draw(const ILineShape* shape, const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool DrawBoundingBox = false);
+	void Draw(const Circle2D& circle, float drawingAngle ,const Color& color = Color::White(), bool DrawBoundingBox = false);
 };
 

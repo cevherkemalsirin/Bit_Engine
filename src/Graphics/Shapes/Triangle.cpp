@@ -1,4 +1,5 @@
 #include "Triangle.h"
+#include "rectangle2D.h"
 #include "Line2D.h"
 #include "Utils.h"
 
@@ -26,6 +27,17 @@ Vector2D Triangle2D::GetCenter() const
 	float midX = (GetP0().GetX() + GetP1().GetX() + GetP2().GetX()) / 3.0f;
 	float midY = (GetP0().GetY() + GetP1().GetY() + GetP2().GetY() / 3.0f);
 	return Vector2D(midX, midY);
+}
+
+Rectangle2D Triangle2D::GetBoundingBox() const
+{
+	//top left of bounding box
+	float topx = fmin(GetP0().GetX(), fmin(GetP1().GetX(), GetP2().GetX()));
+	float topy = fmin(GetP0().GetY(), fmin(GetP1().GetY(), GetP2().GetY()));
+	//bottom right bounding box
+	float botx = fmax(GetP0().GetX(), fmax(GetP1().GetX(), GetP2().GetX()));
+	float boty = fmax(GetP0().GetY(), fmax(GetP1().GetY(), GetP2().GetY()));
+	return Rectangle2D(Vector2D(topx, topy), Vector2D(botx, boty));
 }
 
 float Triangle2D::Area() const

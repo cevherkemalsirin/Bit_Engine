@@ -1,7 +1,8 @@
 #pragma once
 #include "Shape.h"
+#include "ILineShape.h"
 
-class Circle2D : public Shape
+class Circle2D : public Shape, public ILineShape
 {
 	float radius_;
 
@@ -13,6 +14,9 @@ public:
 	inline void SetCenter(const Vector2D center) { points_[0] = center; }
 	inline float GetRadius() const { return radius_; }
 	inline void SetRadius(float r) { radius_ = r; }
+
+	virtual Rectangle2D GetBoundingBox() const override;
+	 std::vector<Line2D> GetLines() const;
 
 	bool Intersect(const Circle2D& otherCircle) const;
 	bool Contains(const Vector2D& point) const;

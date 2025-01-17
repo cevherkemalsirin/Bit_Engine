@@ -113,15 +113,30 @@ void Screen::Draw(const Line2D& line, const Color& color)
 	}
 }
 
-void Screen::Draw(const ILineShape* shape, const Color& color)
+void Screen::Draw(const ILineShape* shape, const Color& color, bool fill, const Color& fillColor, bool drawBoundingBox)
 {
-	for (const auto& line : shape->GetLines())
+
+	if (shape)
 	{
-		Draw(line, color);
+		Rectangle2D  box = shape->GetBoundingBox();
+		for (const auto& line : shape->GetLines())
+		{
+			Draw(line, color);
+		}
+		if (fill)
+		{
+			Rectangle2D boundingBox = shape->GetBoundingBox();
+		}
+		if (drawBoundingBox)
+		{
+			
+			Draw(&box, Color::Red());
+		}
 	}
+
 }
 
-void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color)
+void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color, bool drawBoundingBox)
 {
 	float fullDegree = 360.0f;
 	float quarterDegree = fullDegree / 4.0f;
@@ -139,6 +154,12 @@ void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color
 		Draw(topEnd, color);
 		Draw(leftEnd, color);
 		Draw(bottomEnd, color);
+	}
+
+	if (drawBoundingBox)
+	{
+		Rectangle2D  box = circle.GetBoundingBox();
+		Draw(&box, Color::Red());
 	}
 }
 

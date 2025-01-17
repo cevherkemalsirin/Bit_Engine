@@ -20,6 +20,8 @@ public:
 	virtual std::vector<Line2D> GetLines() const override;
 
 	virtual Vector2D GetCenter() const override;
+	virtual Rectangle2D GetBoundingBox() const override;
+
 	float Area() const;
 	/*
 	* if it is inside of the triangle then dividing the triangle into a 3 smaller triangle with this point and

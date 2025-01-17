@@ -15,10 +15,11 @@ public:
 	inline void SetTopLeftPoint(const Vector2D& topLeft) { points_[0] = topLeft; }
 	inline void SetBottomRightPoint(const Vector2D& bottomRight) { points_[1] = bottomRight; }
 
-	inline Vector2D GetTopLeftPoint() const { return GetPoints()[0]; }
-	inline Vector2D GetBottomRightPoint() const { return GetPoints()[1]; }
+	inline Vector2D GetTopLeftPoint() const { return points_[0]; }
+	inline Vector2D GetBottomRightPoint() const { return points_[1]; }
 	virtual std::vector<Vector2D> GetPoints() const override;
 	virtual Vector2D GetCenter() const override;
+	virtual Rectangle2D GetBoundingBox() const override;
 
 	float GetHeight() const;
 	float GetWidth() const;

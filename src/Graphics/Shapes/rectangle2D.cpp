@@ -25,12 +25,17 @@ Vector2D Rectangle2D::GetCenter() const
 	return Vector2D(midx, midy);
 }
 
+Rectangle2D Rectangle2D::GetBoundingBox() const
+{
+	return *this;
+}
+
 
 std::vector<Vector2D> Rectangle2D::GetPoints() const
 {
 	std::vector<Vector2D> newPoints;
-	Vector2D topRightPoint = GetTopLeftPoint().GetX() + GetWidth() - 1;
-	Vector2D bottomLeftPoint = GetTopLeftPoint().GetY() + GetHeight() - 1;
+	Vector2D topRightPoint(GetTopLeftPoint().GetX() + GetWidth() - 1, GetTopLeftPoint().GetY());
+	Vector2D bottomLeftPoint(GetTopLeftPoint().GetX(), GetTopLeftPoint().GetY() + GetHeight() - 1);
 	newPoints.push_back(GetTopLeftPoint());
 	newPoints.push_back(topRightPoint);
 	newPoints.push_back(GetBottomRightPoint());
