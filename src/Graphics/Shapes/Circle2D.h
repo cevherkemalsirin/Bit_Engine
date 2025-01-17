@@ -19,6 +19,6 @@ public:
 	 std::vector<Line2D> GetLines() const;
 
 	bool Intersect(const Circle2D& otherCircle) const;
-	bool Contains(const Vector2D& point) const;
+	virtual bool ContainsPoint(const Vector2D& point) const override;
 };
 

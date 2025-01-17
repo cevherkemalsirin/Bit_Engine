@@ -9,5 +9,6 @@ class ILineShape
 public:
 	virtual std::vector<Line2D> GetLines() const = 0;
 	virtual Rectangle2D GetBoundingBox() const = 0;
+	virtual bool ContainsPoint(const Vector2D& point) const = 0;
 };
 

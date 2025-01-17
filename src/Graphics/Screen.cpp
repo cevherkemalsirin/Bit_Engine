@@ -125,11 +125,10 @@ void Screen::Draw(const ILineShape* shape, const Color& color, bool fill, const 
 		}
 		if (fill)
 		{
-			Rectangle2D boundingBox = shape->GetBoundingBox();
+			
 		}
 		if (drawBoundingBox)
 		{
-			
 			Draw(&box, Color::Red());
 		}
 	}

@@ -27,7 +27,7 @@ public:
 	* if it is inside of the triangle then dividing the triangle into a 3 smaller triangle with this point and
 	* if area sum of these triangles are equal to the big triangle then it is inside of the shape
 	*/
-	bool ContainsPoint(const Vector2D& p) const;
+	virtual bool ContainsPoint(const Vector2D& point) const override;
 
 private:
 	float Area(const Vector2D& p0, const Vector2D& p1, const Vector2D& p2) const;

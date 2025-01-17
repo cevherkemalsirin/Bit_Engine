@@ -28,7 +28,7 @@ public:
 
 
 	bool Intersects(const Rectangle2D& targetRect) const;
-	bool ContainsPoint(const Vector2D & point) const;
+	virtual bool ContainsPoint(const Vector2D & point) const override;
 	void MoveTo(const Vector2D& targetPosition);
 
 	static Rectangle2D Inset(const Rectangle2D& rect, const Vector2D& insetOffset);
