@@ -24,11 +24,11 @@ bool Circle2D::Intersect(const Circle2D& otherCircle) const
 {
 	float distance = GetCenter().DistanceTo(otherCircle.GetCenter());
 	float radiusSum = GetRadius() + otherCircle.GetRadius();
-	return math::FEqualSmaller(radiusSum, distance);
+	return math::FEqualSmaller(distance, radiusSum);
 }
 
-bool Circle2D::Contains(const Vector2D& point) const
+bool Circle2D::ContainsPoint(const Vector2D& point) const
 {
 	float distance = GetCenter().DistanceTo(point);
-	return math::FEqualSmaller(radius_, distance);
+	return math::FEqualSmaller(distance, radius_);
 }

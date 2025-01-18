@@ -17,6 +17,7 @@ public:
 
 	inline Vector2D GetTopLeftPoint() const { return points_[0]; }
 	inline Vector2D GetBottomRightPoint() const { return points_[1]; }
+	//[0] -> topleft, [1] -> topright, [2] ->botright, [3]-> botleft
 	virtual std::vector<Vector2D> GetPoints() const override;
 	virtual Vector2D GetCenter() const override;
 	virtual Rectangle2D GetBoundingBox() const override;

@@ -35,8 +35,8 @@ int main(int argc, char* argv[])
 	Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
 	Circle2D circ(Vector2D(112, 144), 50.0f);
 	Rectangle2D rec(Vector2D(50, 50), Vector2D(100, 100));
-	thescreen.Draw(&tri2,Color::White(),false,Color::Black(),true);
-	thescreen.Draw(circ, 0.5f, Color::White(), true);
+	thescreen.Draw(tri, Color::Orange(), true, Color::Orange());
+	thescreen.Draw(circ, 0.5f, Color::Blue(), true, Color::Blue());
 	thescreen.RenderScreen();
 
 	SDL_Event sdlEvent;

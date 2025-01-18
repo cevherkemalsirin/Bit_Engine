@@ -50,7 +50,7 @@ bool Triangle2D::ContainsPoint(const Vector2D& p) const
 	float area1 = Area(GetP0(), GetP1(), p);
 	float area2 = Area(GetP1(), GetP2(), p);
 	float area3 = Area(GetP2(), GetP0(), p);
-	return (area1 + area2 + area3) == Area();
+	return math::FEqual((area1 + area2 + area3), Area());
 }
 
 float Triangle2D::Area(const Vector2D& p0, const Vector2D& p1, const Vector2D& p2) const

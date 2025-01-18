@@ -118,24 +118,26 @@ void Screen::Draw(const ILineShape* shape, const Color& color, bool fill, const 
 
 	if (shape)
 	{
-		Rectangle2D  box = shape->GetBoundingBox();
 		for (const auto& line : shape->GetLines())
 		{
 			Draw(line, color);
 		}
+
 		if (fill)
 		{
-			
+			Fill(shape, fillColor);
 		}
+		
 		if (drawBoundingBox)
 		{
+			Rectangle2D  box = shape->GetBoundingBox();
 			Draw(&box, Color::Red());
 		}
 	}
 
 }
 
-void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color, bool drawBoundingBox)
+void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color, bool fill, const Color& fillColor, bool drawBoundingBox)
 {
 	float fullDegree = 360.0f;
 	float quarterDegree = fullDegree / 4.0f;
@@ -154,7 +156,10 @@ void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color
 		Draw(leftEnd, color);
 		Draw(bottomEnd, color);
 	}
-
+	if (fill)
+	{
+		Fill(&circle, fillColor);
+	}
 	if (drawBoundingBox)
 	{
 		Rectangle2D  box = circle.GetBoundingBox();
@@ -162,8 +167,32 @@ void Screen::Draw(const Circle2D& circle, float drawingAngle, const Color& color
 	}
 }
 
+
 void Screen::ClearScreen(const Color & color)
 {
 	SDL_SetRenderDrawColor(renderer_,color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
 	SDL_RenderClear(renderer_);
+}
+
+void Screen::Fill(const ILineShape* shape, const Color& color)
+{
+	if (shape)
+	{
+		Rectangle2D  box = shape->GetBoundingBox();
+		int rowStart = static_cast<int>(box.GetTopLeftPoint().GetY());
+		int rowEnd = static_cast<int>(box.GetBottomRightPoint().GetY());
+		int colStart = static_cast<int>(box.GetTopLeftPoint().GetX());
+		int colEnd = static_cast<int>(box.GetBottomRightPoint().GetX());
+		for (int y = rowStart; y < rowEnd; ++y)
+		{
+			for (int x = colStart; x < colEnd; ++x)
+			{
+				Vector2D currentPoint(x, y);
+				if (shape->ContainsPoint(currentPoint))
+				{
+					Draw(currentPoint, color);
+				}
+			}
+		}
+	}
 }
