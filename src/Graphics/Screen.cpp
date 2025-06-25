@@ -174,6 +174,8 @@ void Screen::ClearScreen(const Color & color)
 	SDL_RenderClear(renderer_);
 }
 
+
+
 void Screen::Fill(const ILineShape* shape, const Color& color)
 {
 	if (shape)

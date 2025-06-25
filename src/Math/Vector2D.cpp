@@ -12,13 +12,13 @@ Vector2D::Vector2D(float x, float y):x(x), y(y)
 
 }
 
-bool Vector2D::operator==(const Vector2D vec2) const
+bool Vector2D::operator==(const Vector2D& vec2) const
 {
 	return (math::FEqual(this->GetX(), vec2.GetX()) && math::FEqual(this->GetY(), vec2.GetY()));
 }
 
-bool Vector2D::operator!=(const Vector2D vec2) const
-{
+bool Vector2D::operator!=(const Vector2D& vec2) const
+{	
 	return !(*this == vec2);
 }
 
@@ -34,7 +34,7 @@ Vector2D Vector2D::operator*(float scalar) const
 
 Vector2D Vector2D::operator/(float scalar) const
 {
-	if (fabs(scalar) < math::EPSILON) throw std::invalid_argument("Divaded By 0");
+	if (fabs(scalar) < math::EPSILON) { throw std::invalid_argument("Divaded By 0"); }
 
 	return Vector2D((this->GetX() / scalar), (this->GetY() / scalar));
 }
@@ -86,7 +86,7 @@ float Vector2D::Magnitude_square() const
 Vector2D Vector2D::GetNormalized() const
 {
 	float mag = this->Magnitude();
-	if (mag <= math::EPSILON) return ZERO;
+	if (mag <= math::EPSILON) { return ZERO; }
 	
 	return *this/mag;
 }
@@ -94,7 +94,7 @@ Vector2D Vector2D::GetNormalized() const
 Vector2D& Vector2D::Normalize()
 {
 	float mag = this->Magnitude();
-	if (mag <= math::EPSILON) return *this;
+	if (mag <= math::EPSILON) { return *this; }
 
 	*this /= mag;
 	return *this;
@@ -160,7 +160,7 @@ std::ostream& operator<<(std::ostream& os, const Vector2D& vec)
 	return os;
 }
 
-Vector2D operator*(float scalar, Vector2D Vec)
+Vector2D operator*(float scalar, const Vector2D& Vec)
 {
 	return Vec * scalar;
 }

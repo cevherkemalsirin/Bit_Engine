@@ -14,21 +14,21 @@ bool Game::Initialize(std::string_view gameTitle, int width, int height)
 	//SDL window creation
 	if (SDL_Init(SDL_INIT_EVERYTHING))
 	{
-		std::cerr << " SDL initializing failed!. " << std::endl;
+		std::cerr << " SDL initializing failed!. " << "\n";
 		return false;
 	}
 	
 	SDLWindow = SDL_CreateWindow(gameTitle.data(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_INPUT_FOCUS);
 	if (!SDLWindow)
 	{
-		std::cerr << " Error creating SDL Window Failed! " << std::endl;
+		std::cerr << " Error creating SDL Window Failed! " <<  "\n";
 		return false;
 	}
 
 	SDLRenderer = SDL_CreateRenderer(SDLWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!SDLRenderer)
 	{
-		std::cerr << " Error creating SDL Renderer Failed! " << std::endl;
+		std::cerr << " Error creating SDL Renderer Failed! " << "\n";
 		return false;
 	}
 	//Creating SDL surface, prefer renderer but it is another way. sdlSurface 1D array of pixels CPU

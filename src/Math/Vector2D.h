@@ -15,12 +15,12 @@ private:
 	float y;
 
 	friend std::ostream& operator<<(std::ostream& os, const Vector2D& vec);
-	friend Vector2D operator*(float scalar, Vector2D Vec);
+	friend Vector2D operator*(float scalar, const Vector2D& Vec);
 public:
 	static const Vector2D ZERO;
 	//Constructors
 	Vector2D() :Vector2D(0) {};
-	Vector2D(float value);
+	explicit Vector2D(float value);
 	Vector2D(float x, float y);
 
 	//setters
@@ -32,8 +32,8 @@ public:
 	inline float GetY() const { return this->y; }
 
 	//operators
-	bool operator == (const Vector2D vec2) const;
-	bool operator != (const Vector2D vec2) const;
+	bool operator == (const Vector2D& vec2) const;
+	bool operator != (const Vector2D& vec2) const;
 	//negate the vector ---> to <---
 	Vector2D operator-() const;
 	Vector2D operator*(float scalar) const;
