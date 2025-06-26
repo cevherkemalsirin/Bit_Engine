@@ -7,7 +7,7 @@ class Line2D;
 class Star2D;
 class Triangle2D;
 class Rectangle2D;
-class ILineShape;
+class Shape;
 class Circle2D;
 struct SDL_Window;
 struct SDL_Renderer;
@@ -22,7 +22,7 @@ class Screen
 	SDL_Renderer* renderer_;
 
 	void ClearScreen(const Color& color = Color::Black());
-	void Fill(const ILineShape* shape, const Color& color = Color::White());
+	void Fill(const Shape* shape, const Color& color = Color::White());
 public:
 	Screen();
 	~Screen();
@@ -42,7 +42,7 @@ public:
 	void Draw(const Triangle2D& triangle, const Color& color = Color::White());
 	void Draw(const Rectangle2D& rectangle, const Color& color = Color::White());
 	*/
-	void Draw(const ILineShape* shape, const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool DrawBoundingBox = false);
+	void Draw(const Shape* shape, const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool DrawBoundingBox = false);
 	void Draw(const Circle2D& circle, float drawingAngle ,const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool frawBoundingBox = false);
 };
 

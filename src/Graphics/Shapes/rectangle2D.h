@@ -1,10 +1,9 @@
 #pragma once
 #include "Shape.h"
-#include "ILineShape.h"
 
 class Line2D;
 
-class Rectangle2D : public Shape, public ILineShape
+class Rectangle2D : public Shape
 {
 
 public:

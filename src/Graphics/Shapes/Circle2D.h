@@ -1,8 +1,8 @@
 #pragma once
 #include "Shape.h"
-#include "ILineShape.h"
 
-class Circle2D : public Shape, public ILineShape
+
+class Circle2D : public Shape
 {
 	float radius_;
 

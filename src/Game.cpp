@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <SDL.h>
 #include <iostream>
+
 Game::Game():isRunning(false)
 {
 }
@@ -9,7 +10,7 @@ Game::~Game()
 {
 }
 
-bool Game::Initialize(std::string_view gameTitle, int width, int height)
+bool Game::Initialize(const std::string& gameTitle, int width, int height)
 {
 	//SDL window creation
 	if (SDL_Init(SDL_INIT_EVERYTHING))

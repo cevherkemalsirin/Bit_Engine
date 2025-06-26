@@ -92,8 +92,5 @@
     <ClInclude Include="src\Graphics\Shapes\Circle2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics\Shapes\ILineShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

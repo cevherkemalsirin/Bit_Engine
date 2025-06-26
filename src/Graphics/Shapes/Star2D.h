@@ -2,16 +2,17 @@
 #include <stdint.h>
 #include <vector>
 #include <Vector2D.h>
-#include "ILineShape.h"
+#include "Shape.h"
+
 
 class Line2D;
 
-class Star2D: public ILineShape
+class Star2D : public Shape
 {
 	uint8_t numberOfSpikes_;
 	float centerSpikeDist_;
 	Vector2D center_;
-	float spikeLength_;
+	float spikeLength_;	
 	//n is a number how many steps jump to connect another spike
 	uint8_t n_;
 	std::vector<Line2D> lines_;

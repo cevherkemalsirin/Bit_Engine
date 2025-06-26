@@ -1,8 +1,8 @@
 #pragma once
 #include "Shape.h"
-#include "ILineShape.h"
 
-class Triangle2D : public Shape, public ILineShape
+
+class Triangle2D : public Shape
 {
 	
 public:

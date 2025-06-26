@@ -192,7 +192,6 @@
     <ClCompile Include="src\Graphics\Shapes\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Graphics\Shapes\ILineShape.h" />
     <ClInclude Include="src\Graphics\Shapes\Circle2D.h" />
     <ClInclude Include="src\Graphics\Shapes\rectangle2D.h" />
     <ClInclude Include="src\Graphics\Shapes\Shape.h" />

@@ -8,9 +8,8 @@
 //============================================================================
 
 #pragma once
-#include <string_view>
 
-
+#include <string>
 class SDL_Window;
 class SDL_Renderer;
 class SDL_Surface;
@@ -38,7 +37,7 @@ public:
 	@returns 
 	true if everything okey.
 	*/
-	bool Initialize(std::string_view gameTitle, int width = 800, int height = 600);
+	bool Initialize(const std::string& gameTitle, int width = 800, int height = 600);
 
 	void Run();
 	void Destroy();

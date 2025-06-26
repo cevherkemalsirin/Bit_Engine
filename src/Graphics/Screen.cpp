@@ -1,13 +1,13 @@
 #include "Screen.h"
 #include <vector>
 #include "Vector2D.h"
-#include "Shapes/ILineShape.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Star2D.h"
 #include "Shapes/rectangle2D.h"
 #include "Shapes/Circle2D.h"
 #include "Shapes/Triangle.h"
 #include "SDL.h"
+
 
 Screen::Screen():window_(nullptr),renderer_(nullptr),height_(0),width_(0)
 {
@@ -113,7 +113,7 @@ void Screen::Draw(const Line2D& line, const Color& color)
 	}
 }
 
-void Screen::Draw(const ILineShape* shape, const Color& color, bool fill, const Color& fillColor, bool drawBoundingBox)
+void Screen::Draw(const Shape* shape, const Color& color, bool fill, const Color& fillColor, bool drawBoundingBox)
 {
 
 	if (shape)
@@ -176,7 +176,7 @@ void Screen::ClearScreen(const Color & color)
 
 
 
-void Screen::Fill(const ILineShape* shape, const Color& color)
+void Screen::Fill(const Shape* shape, const Color& color)
 {
 	if (shape)
 	{
