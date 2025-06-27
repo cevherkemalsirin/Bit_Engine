@@ -15,9 +15,9 @@ Rectangle2D Circle2D::GetBoundingBox() const
 	return Rectangle2D(topLeftPoint,bottomRightPoint);
 }
 
-std::vector<Line2D> Circle2D::GetLines() const
+std::optional<std::vector<Line2D>> Circle2D::GetLines() const
 {
-	return std::vector<Line2D>();
+	return std::nullopt;
 }
 
 bool Circle2D::Intersect(const Circle2D& otherCircle) const

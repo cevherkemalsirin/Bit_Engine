@@ -16,7 +16,7 @@ class Star2D : public Shape
 	//n is a number how many steps jump to connect another spike
 	uint8_t n_;
 	std::vector<Line2D> lines_;
-	//is david star kind or hollow star kid
+	//is david star kind or hollow star kind
 	bool innersIntersect_;
 	/* 
 	*180 – 360n_/numberOfSpikes_ = 180(1 – 2n_/numberOfSpikes_) formula for inner angle 
@@ -26,13 +26,13 @@ class Star2D : public Shape
 	void ValidateSpikeNumber();
 
 public:
-	Star2D(const Vector2D& center) :Star2D(center, 5, 20.0f, 30.0f) {};
+	Star2D(const Vector2D& center) :Star2D(center, 5) {};
 	Star2D(const Vector2D& center,
 		uint8_t spikeNum = 5, 
 		float centerSpikeDist = 20.0f, 
 		float spikeLength = 30.0f);
 
 
-	virtual std::vector<Line2D> GetLines() const override { return lines_; }
+	virtual std::optional<std::vector<Line2D>> GetLines() const override { return lines_; }
 };
 

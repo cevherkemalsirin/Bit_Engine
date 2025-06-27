@@ -23,7 +23,7 @@ public:
 
 	float GetHeight() const;
 	float GetWidth() const;
-	virtual std::vector<Line2D> GetLines() const override;
+	virtual std::optional<std::vector<Line2D>> GetLines() const override;
 	float Area() const;
 
 

@@ -14,7 +14,7 @@ Triangle2D::Triangle2D(const Vector2D& p0, const Vector2D& p1, const Vector2D& p
 	points_.push_back(p2);
 }
 
-std::vector<Line2D> Triangle2D::GetLines() const
+std::optional<std::vector<Line2D>> Triangle2D::GetLines() const
 {
 	Line2D line1(GetP0(), GetP1());
 	Line2D line2(GetP1(), GetP2());

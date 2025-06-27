@@ -17,7 +17,7 @@ void Star2D::CreateStar()
 	Vector2D firstLineEnd = Vector2D(center_.GetX(), center_.GetY() - centerSpikeDist_);
 	Vector2D firstLineStart = Vector2D(center_.GetX(), firstLineEnd.GetY() - spikeLength_);
     
-	Line2D firstLine(firstLineStart, firstLineEnd);
+	Line2D firstLine{ firstLineStart, firstLineEnd };
 	bool flipFlop = true;
 
 	//radian

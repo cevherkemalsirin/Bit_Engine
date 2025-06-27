@@ -9,7 +9,7 @@ class Color
 	static const SDL_PixelFormat* format_;
 public:
 	Color():Color(0) {};
-	Color(uint32_t color) : color_(color) {};
+	explicit Color(uint32_t color) : color_(color) {};
 	Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 	inline bool operator==(const Color& color)const { return color_ == color.color_; }
 	inline bool operator!=(const Color& color)const { return !(*this == color); }

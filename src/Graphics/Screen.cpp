@@ -118,21 +118,27 @@ void Screen::Draw(const Shape* shape, const Color& color, bool fill, const Color
 
 	if (shape)
 	{
-		for (const auto& line : shape->GetLines())
+		if (const auto& optLines = shape->GetLines(); optLines.has_value())
 		{
-			Draw(line, color);
+			for (const auto& line : *optLines)
+			{
+				Draw(line, color);
+			}
+		
+
+			if (fill)
+			{
+				Fill(shape, fillColor);
+			}
+
+			if (drawBoundingBox)
+			{
+				Rectangle2D  box = shape->GetBoundingBox();
+				Draw(&box, Color::Red());
+			}
 		}
 
-		if (fill)
-		{
-			Fill(shape, fillColor);
-		}
-		
-		if (drawBoundingBox)
-		{
-			Rectangle2D  box = shape->GetBoundingBox();
-			Draw(&box, Color::Red());
-		}
+	
 	}
 
 }

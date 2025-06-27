@@ -53,7 +53,7 @@ float Rectangle2D::GetWidth() const
 	return GetBottomRightPoint().GetX() - GetTopLeftPoint().GetX() + 1;
 }
 
-std::vector<Line2D> Rectangle2D::GetLines() const
+std::optional<std::vector<Line2D>> Rectangle2D::GetLines() const
 {
 	Line2D line1(GetPoints()[0], GetPoints()[1]);
 	Line2D line2(GetPoints()[1], GetPoints()[2]);

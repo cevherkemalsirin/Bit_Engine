@@ -16,9 +16,10 @@ public:
 	inline void SetRadius(float r) { radius_ = r; }
 
 	virtual Rectangle2D GetBoundingBox() const override;
-	 std::vector<Line2D> GetLines() const;
+	std::optional <std::vector<Line2D>> GetLines() const override;
+	virtual bool ContainsPoint(const Vector2D& point) const override;
 
 	bool Intersect(const Circle2D& otherCircle) const;
-	virtual bool ContainsPoint(const Vector2D& point) const override;
+	
 };
 
