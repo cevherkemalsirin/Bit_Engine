@@ -31,12 +31,17 @@ int main(int argc, char* argv[])
 	Vector2D point = Vector2D(105,50);
 
 	*/
-	Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	Circle2D circ(Vector2D(112, 144), 50.0f);
-	Rectangle2D rec(Vector2D(50, 50), Vector2D(100, 100));
-	thescreen.Draw(tri, Color::Orange(), true, Color::Orange());
-	thescreen.Draw(circ, 0.5f, Color::Blue(), true, Color::Blue());
+	Star2D star2D(Vector2D(112, 144), 5);
+	Rectangle2D starBox = star2D.GetBoundingBox();
+	thescreen.Draw(&star2D, Color::Green(), true);
+	thescreen.Draw(&starBox, Color::Green(), false);
+
+	//Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
+	//Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
+	//Circle2D circ(Vector2D(112, 144), 50.0f);
+	//Rectangle2D rec(Vector2D(50, 50), Vector2D(100, 100));
+	//thescreen.Draw(tri, Color::Orange(), true, Color::Orange());
+	//thescreen.Draw(circ, 0.5f, Color::Blue(), true, Color::Blue());
 	thescreen.RenderScreen();
 
 	SDL_Event sdlEvent;

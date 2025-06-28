@@ -32,19 +32,18 @@ void Screen::Init(uint32_t w, uint32_t h, uint8_t zoom)
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
 	{
-		//return nullptr;
-		return;
+		throw std::runtime_error("SDL video could not initialize!");
 	}
 	width_ = w;
 	height_ = h;
 
-	window_ = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width_ * zoom, height_ * zoom,0 /*SDL_WINDOW_FULLSCREEN_DESKTOP*/);
+	window_ = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width_ * zoom, height_ * zoom, 0 
+	/*SDL_WINDOW_FULLSCREEN_DESKTOP*/);
 	renderer_ = SDL_CreateRenderer(window_, 0, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	if (!window_ || !renderer_)
 	{
-		//return nullptr;
-		return;
+		throw std::runtime_error("SDL window or renderer could not be created!");
 	}
 
 	SDL_PixelFormat* format = SDL_GetWindowSurface(window_)->format;
@@ -125,7 +124,6 @@ void Screen::Draw(const Shape* shape, const Color& color, bool fill, const Color
 				Draw(line, color);
 			}
 		
-
 			if (fill)
 			{
 				Fill(shape, fillColor);

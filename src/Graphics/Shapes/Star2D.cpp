@@ -1,6 +1,7 @@
 #include "Star2D.h"
 #include "Line2D.h"
 #include "Utils.h"
+#include "Rectangle2D.h"
 
 Star2D::Star2D(const Vector2D& center, uint8_t spikeNum, float centerSpikeDist, float spikeLength) :
 	numberOfSpikes_(spikeNum), centerSpikeDist_(centerSpikeDist), 
@@ -10,6 +11,7 @@ Star2D::Star2D(const Vector2D& center, uint8_t spikeNum, float centerSpikeDist, 
 	n_ = (numberOfSpikes_ - 1) / 2;
 	CreateStar();
 }
+
 
 void Star2D::CreateStar()
 {
@@ -58,4 +60,58 @@ void Star2D::ValidateSpikeNumber()
 	{
 		numberOfSpikes_ = 3;
 	}
+}
+
+
+bool Star2D::ContainsPoint(const Vector2D& point) const
+{
+	uint8_t crossing{ 0 };
+	for (const auto& line : lines_)
+	{
+		Vector2D sp = line.GetPointStart();
+		Vector2D ep = line.GetPointEnd();
+		line.Slope();
+
+		if((sp.GetY() > point.GetY()) != (ep.GetY() > point.GetY())) // skips horizantal line
+		{
+			float crossX = sp.GetX() + (point.GetY() - sp.GetY()) * (ep.GetX() - sp.GetX()) / (ep.GetY() - sp.GetY());
+			if (point.GetX() < crossX)
+			{
+				++crossing;
+			}
+		}
+
+	}
+	// if crossing is odd then it is inside of the star else it is outside of the star
+	if(crossing % 2 == 1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+}
+
+Rectangle2D Star2D::GetBoundingBox() const
+{
+	float minX = center_.GetX();
+	float maxX = center_.GetX();
+	float minY = center_.GetY();
+	float maxY = center_.GetY();
+
+	for (const auto& line : lines_) {
+		const Vector2D& sp = line.GetPointStart();
+		const Vector2D& ep = line.GetPointEnd();
+
+		minX = std::min({minX, sp.GetX(), ep.GetX()});
+		maxX = std::max({maxX, sp.GetX(), ep.GetX()});
+		minY = std::min({minY, sp.GetY(), ep.GetY()});
+		maxY = std::max({maxY, sp.GetY(), ep.GetY()});
+	}
+
+	Vector2D topLeft(minX, minY);
+	Vector2D bottomRight(maxX, maxY);
+	return Rectangle2D(topLeft, bottomRight);
 }

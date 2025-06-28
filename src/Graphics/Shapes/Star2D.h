@@ -6,6 +6,7 @@
 
 
 class Line2D;
+class Rectangle2D;
 
 class Star2D : public Shape
 {
@@ -32,7 +33,10 @@ public:
 		float centerSpikeDist = 20.0f, 
 		float spikeLength = 30.0f);
 
-
+	//even/odd line crossing algorim to determine if a point is inside of the star
+	virtual bool ContainsPoint(const Vector2D& point) const override;
+	virtual Vector2D GetCenter() const override { return center_; }
+	virtual Rectangle2D GetBoundingBox() const override;
 	virtual std::optional<std::vector<Line2D>> GetLines() const override { return lines_; }
 };
 
