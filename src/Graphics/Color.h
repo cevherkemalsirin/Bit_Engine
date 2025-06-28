@@ -17,7 +17,7 @@ public:
 	void SetRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 	inline static void Init(SDL_PixelFormat* format) { format_ = format; }
 
-	static Color EvaluateSourceAlpha(const Color& source, const Color& destination);
+	static Color AlphaBlend(const Color& newColor, const Color& currentColor);
 
 	void SetRed(uint8_t red);
 	void SetGreen(uint8_t green);

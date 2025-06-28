@@ -17,21 +17,18 @@ void Color::SetRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 
 }
 
-Color Color::EvaluateSourceAlpha(const Color& source, const Color& destination)
+Color Color::AlphaBlend(const Color& newColor, const Color& currentColor)
 {
-	float sourceAlpha = source.GetAlpha() / 255.0f;
-	float destAlpha = 1.0f - sourceAlpha;
+	//mixColor =  newColor * newColorAlpha + currentColor * (1 - newColorAlpha)
+	Color mixedColor;
+	float newColorAlpha = static_cast<float>(newColor.GetAlpha()) / 255.0f;
+	float destAlpha = 1.0f - newColorAlpha;
+	mixedColor.SetAlpha(255);
+	mixedColor.SetRed(static_cast<float>(newColor.GetRed()) * newColorAlpha + static_cast<float>(currentColor.GetRed()) * destAlpha);
+	mixedColor.SetBlue(static_cast<float>(newColor.GetBlue()) * newColorAlpha + static_cast<float>(currentColor.GetBlue()) * destAlpha);
+	mixedColor.SetGreen(static_cast<float>(newColor.GetGreen()) * newColorAlpha + static_cast<float>(currentColor.GetGreen()) * destAlpha);
 
-	Color newColor{};
-	//out = alpha * new + (1 - alpha) * old
-	newColor.SetRed(sourceAlpha * static_cast<float>(source.GetRed()) + destAlpha * static_cast<float>(destination.GetRed()));
-	newColor.SetBlue(sourceAlpha * static_cast<float>(source.GetBlue()) + destAlpha * static_cast<float>(destination.GetBlue()));
-	newColor.SetGreen(sourceAlpha * static_cast<float>(source.GetGreen()) + destAlpha * static_cast<float>(destination.GetGreen()));
-	newColor.SetAlpha(255);
-	
-	//result.r = background.r * (1 - A) + foreground.r * A
-
-	return newColor;
+	return mixedColor;
 }
 
 void Color::SetRed(uint8_t red)

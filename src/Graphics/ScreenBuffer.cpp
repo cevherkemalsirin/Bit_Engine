@@ -61,7 +61,8 @@ void ScreenBuffer::SetPixel(uint32_t x, uint32_t y, Color color)
 	{
 		SDL_LockSurface(surface_);
 		uint32_t* pixels = static_cast<uint32_t*>(surface_->pixels);
-		pixels[GetPixelIndex(y, x)] = color.GetPixelColor();
+		Color currentPixelColor = Color(pixels[GetPixelIndex(y, x)]);
+		pixels[GetPixelIndex(y, x)] = Color::AlphaBlend(color,currentPixelColor).GetPixelColor();
 		SDL_UnlockSurface(surface_);
 	}
 

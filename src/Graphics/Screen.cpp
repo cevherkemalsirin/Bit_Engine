@@ -46,7 +46,7 @@ void Screen::Init(uint32_t w, uint32_t h, uint8_t zoom)
 		throw std::runtime_error("SDL window or renderer could not be created!");
 	}
 
-	SDL_PixelFormat* format = SDL_GetWindowSurface(window_)->format;
+	SDL_PixelFormat* format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 	Color::Init(format);
 	clearColor_ = Color::Black();
 	backBuffer_.Init(format->format, width_, height_);
