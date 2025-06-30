@@ -44,5 +44,13 @@ public:
 	*/
 	void Draw(const Shape* shape, const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool DrawBoundingBox = false);
 	void Draw(const Circle2D& circle, float drawingAngle ,const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool frawBoundingBox = false);
+
+	static Screen& Instance() {
+		static Screen instance;
+		return instance;
+	}
+private:
+	Screen(const Screen&) = delete;
+	Screen& operator=(const Screen&) = delete;
 };
 
