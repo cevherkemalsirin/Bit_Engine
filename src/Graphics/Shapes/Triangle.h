@@ -22,6 +22,8 @@ public:
 
 	virtual Vector2D GetCenter() const override;
 	virtual Rectangle2D GetBoundingBox() const override;
+	//move the triangle to a new position by centering it at the new position
+	virtual void MoveTo(const Vector2D& newPos) override;
 
 	float Area() const;
 	/*

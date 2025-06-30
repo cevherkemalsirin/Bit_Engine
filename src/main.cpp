@@ -15,41 +15,22 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    Screen thescreen;
-    thescreen.Init(224, 288, 2);
-	/*
-	
-	//thescreen.SetClearColor(Color::Orange());
-	Line2D line(Vector2D(112,40), Vector2D(112, 90));
-	float rotateAngle = 0.005f;
-	
-	Star2D star(Vector2D(112, 144), 7);
-	thescreen.Draw(star, Color::Green());
-	line.Rotate(0.63,line.GetPointStart());
-	thescreen.Draw(line, Color::Purple());
+    // Use the singleton instance of Screen
+    Screen::Instance().Init(224, 288, 2);
 
-	Vector2D point = Vector2D(105,50);
 
-	*/
-	Star2D star2D(Vector2D(112, 144), 5);
-	Rectangle2D starBox = star2D.GetBoundingBox();
-	thescreen.Draw(&star2D, Color::Green(), true);
-	thescreen.Draw(&starBox, Color::Green(), false);
+	Triangle2D triangle(Vector2D(10, 10), Vector2D(20, 10), Vector2D(15, 20));
+	Screen::Instance().Draw(&triangle, Color::Green(), true, Color::Green(), true);
 
-	//Triangle2D* tri = new Triangle2D(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	Triangle2D tri2(Vector2D(112, 40), Vector2D(112, 10), Vector2D(150, 40));
-	Circle2D circ(Vector2D(112, 144), 50.0f);
-	//Rectangle2D rec(Vector2D(50, 50), Vector2D(100, 100));
-	thescreen.Draw(&tri2, Color::Orange(), true, Color(255,0,0,125));
-	thescreen.Draw(circ, 0.5f, Color::Blue(), true, Color(255, 0, 0, 150));
-	thescreen.RenderScreen();
+
+	Screen::Instance().RenderScreen();
 
 	SDL_Event sdlEvent;
 	bool running = true;
 	while (running)
 	{
 		/*line.Rotate(rotateAngle, point);
-		thescreen.Draw(line);
+		Screen::Instance().Draw(line);
 
 	   */
 		while (SDL_PollEvent(&sdlEvent))

@@ -32,11 +32,16 @@ public:
 		uint8_t spikeNum = 5, 
 		float centerSpikeDist = 20.0f, 
 		float spikeLength = 30.0f);
+	inline unsigned int GetRadius() const { return centerSpikeDist_ + spikeLength_; }
+
+	static Star2D GenerateStar();
 
 	//even/odd line crossing algorim to determine if a point is inside of the star
 	virtual bool ContainsPoint(const Vector2D& point) const override;
 	virtual Vector2D GetCenter() const override { return center_; }
 	virtual Rectangle2D GetBoundingBox() const override;
+	virtual void MoveTo(const Vector2D& newPos) override;
 	virtual std::optional<std::vector<Line2D>> GetLines() const override { return lines_; }
+
 };
 

@@ -1,8 +1,5 @@
 #pragma once
 #include <cmath>
-class Utils
-{
-};
 
 namespace math
 {
@@ -20,5 +17,8 @@ bool FEqualGreater(float x, float y);
 bool FEqualSmaller(float x, float y);
 
 float DegreeToRadian(float degree);
+
+
+int GetRandom(int min, int max);
 }
 

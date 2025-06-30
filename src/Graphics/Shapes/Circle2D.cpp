@@ -15,6 +15,13 @@ Rectangle2D Circle2D::GetBoundingBox() const
 	return Rectangle2D(topLeftPoint,bottomRightPoint);
 }
 
+void Circle2D::MoveTo(const Vector2D& newPos)
+{
+	Vector2D moveOffset = newPos - GetCenter();
+	MoveBy(moveOffset);
+	points_[0] = newPos; // Update the center point
+}
+
 std::optional<std::vector<Line2D>> Circle2D::GetLines() const
 {
 	return std::nullopt;

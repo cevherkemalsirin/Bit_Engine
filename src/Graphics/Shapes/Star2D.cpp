@@ -2,6 +2,8 @@
 #include "Line2D.h"
 #include "Utils.h"
 #include "Rectangle2D.h"
+#include "Screen.h"
+#include <random>
 
 Star2D::Star2D(const Vector2D& center, uint8_t spikeNum, float centerSpikeDist, float spikeLength) :
 	numberOfSpikes_(spikeNum), centerSpikeDist_(centerSpikeDist), 
@@ -12,6 +14,17 @@ Star2D::Star2D(const Vector2D& center, uint8_t spikeNum, float centerSpikeDist, 
 	CreateStar();
 }
 
+Star2D Star2D::GenerateStar()
+{
+	// Create a star with random parameters
+	int spikes = math::GetRandom(3, 9);
+	float centerDist = math::GetRandom(10, 50);
+	float spikeLength = math::GetRandom(10, 50);
+	Vector2D center(math::GetRandom(0, Screen::Instance().Getwidth()),
+		math::GetRandom(0, Screen::Instance().GetHeight()));
+
+	return Star2D(center, spikes, centerDist, spikeLength);
+}
 
 void Star2D::CreateStar()
 {
@@ -47,6 +60,11 @@ void Star2D::CreateStar()
 			lines_.push_back(nextLine);
 	}
 
+	for(const Line2D& line : lines_)
+	{
+		points_.push_back(line.GetPointStart());
+		points_.push_back(line.GetPointEnd());
+	}
 }
 
 void Star2D::ValidateSpikeNumber()
@@ -70,7 +88,6 @@ bool Star2D::ContainsPoint(const Vector2D& point) const
 	{
 		Vector2D sp = line.GetPointStart();
 		Vector2D ep = line.GetPointEnd();
-		line.Slope();
 
 		if((sp.GetY() > point.GetY()) != (ep.GetY() > point.GetY())) // skips horizantal line
 		{
@@ -114,4 +131,11 @@ Rectangle2D Star2D::GetBoundingBox() const
 	Vector2D topLeft(minX, minY);
 	Vector2D bottomRight(maxX, maxY);
 	return Rectangle2D(topLeft, bottomRight);
+}
+
+void Star2D::MoveTo(const Vector2D& newPos)
+{
+	Vector2D moveOffset = newPos - GetCenter();
+	MoveBy(moveOffset);
+	center_ = newPos;
 }

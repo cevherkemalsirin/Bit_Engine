@@ -25,7 +25,7 @@ std::optional<std::vector<Line2D>> Triangle2D::GetLines() const
 Vector2D Triangle2D::GetCenter() const
 {
 	float midX = (GetP0().GetX() + GetP1().GetX() + GetP2().GetX()) / 3.0f;
-	float midY = (GetP0().GetY() + GetP1().GetY() + GetP2().GetY() / 3.0f);
+	float midY = (GetP0().GetY() + GetP1().GetY() + GetP2().GetY()) / 3.0f;
 	return Vector2D(midX, midY);
 }
 
@@ -38,6 +38,12 @@ Rectangle2D Triangle2D::GetBoundingBox() const
 	float botx = fmax(GetP0().GetX(), fmax(GetP1().GetX(), GetP2().GetX()));
 	float boty = fmax(GetP0().GetY(), fmax(GetP1().GetY(), GetP2().GetY()));
 	return Rectangle2D(Vector2D(topx, topy), Vector2D(botx, boty));
+}
+
+void Triangle2D::MoveTo(const Vector2D& newPos)
+{
+	Vector2D moveOffset = newPos - GetCenter();
+	MoveBy(moveOffset);
 }
 
 float Triangle2D::Area() const

@@ -10,12 +10,14 @@ Rectangle2D::Rectangle2D(const Vector2D& startP, const Vector2D& endP)
 {
 	points_.push_back(startP);
 	points_.push_back(endP);
+	points_.push_back(Vector2D(endP.GetX(), startP.GetY()));
+	points_.push_back(Vector2D(startP.GetX(), endP.GetY()));
 }
 
 Rectangle2D::Rectangle2D(const Vector2D& topLeftP, unsigned int height, unsigned int width)
 {
-	points_.push_back(topLeftP);
-	points_.push_back(Vector2D(topLeftP.GetX() + width - 1, topLeftP.GetY() + height - 1));
+	Vector2D bottomRightP = Vector2D(topLeftP.GetX() + width - 1, topLeftP.GetY() + height - 1);
+	*this = Rectangle2D(topLeftP, bottomRightP);
 }
 
 Vector2D Rectangle2D::GetCenter() const
@@ -30,18 +32,6 @@ Rectangle2D Rectangle2D::GetBoundingBox() const
 	return *this;
 }
 
-
-std::vector<Vector2D> Rectangle2D::GetPoints() const
-{
-	std::vector<Vector2D> newPoints;
-	Vector2D topRightPoint(GetTopLeftPoint().GetX() + GetWidth() - 1, GetTopLeftPoint().GetY());
-	Vector2D bottomLeftPoint(GetTopLeftPoint().GetX(), GetTopLeftPoint().GetY() + GetHeight() - 1);
-	newPoints.push_back(GetTopLeftPoint());
-	newPoints.push_back(topRightPoint);
-	newPoints.push_back(GetBottomRightPoint());
-	newPoints.push_back(bottomLeftPoint);
-	return newPoints;
-}
 
 float Rectangle2D::GetHeight() const
 {
