@@ -12,10 +12,10 @@ public:
 	Rectangle2D(const Vector2D& topLeftP, unsigned int height, unsigned int width);
 
 	inline void SetTopLeftPoint(const Vector2D& topLeft) { points_[0] = topLeft; }
-	inline void SetBottomRightPoint(const Vector2D& bottomRight) { points_[1] = bottomRight; }
+	inline void SetBottomRightPoint(const Vector2D& bottomRight) { points_[2] = bottomRight; }
 
 	inline Vector2D GetTopLeftPoint() const { return points_[0]; }
-	inline Vector2D GetBottomRightPoint() const { return points_[1]; }
+	inline Vector2D GetBottomRightPoint() const { return points_[2]; }
 
 	virtual Vector2D GetCenter() const override;
 	virtual Rectangle2D GetBoundingBox() const override;

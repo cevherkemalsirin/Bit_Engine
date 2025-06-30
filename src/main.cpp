@@ -9,9 +9,24 @@
 #include "Shapes/Circle2D.h"
 #include "stdint.h"
 #include "SDL.h"
+#include <algorithm>
 #include "Graphics/Shapes/Line2D.h"
 
 using namespace std;
+
+vector<Star2D> GetSortedStars(unsigned int starNum)
+{
+	vector<Star2D> stars;
+	for (unsigned int i = 0; i < starNum; ++i)
+	{
+		stars.push_back(Star2D::GenerateStar());
+	}
+	//sort the stars by radius
+	std::sort(stars.begin(), stars.end(), [](const Star2D& a, const Star2D& b) {
+		return a.GetRadius() < b.GetRadius();
+	});
+	return stars;
+}
 
 int main(int argc, char* argv[])
 {
@@ -19,9 +34,12 @@ int main(int argc, char* argv[])
     Screen::Instance().Init(224, 288, 2);
 
 
-	Triangle2D triangle(Vector2D(10, 10), Vector2D(20, 10), Vector2D(15, 20));
+	Triangle2D triangle(Vector2D(10, 10), Vector2D(20, 10), Vector2D(30, 40));
+	Rectangle2D rectangle(Vector2D(50, 50), Vector2D(100, 100));
+	Screen::Instance().Draw(&rectangle, Color::Blue(), true, Color::Blue(), true);
 	Screen::Instance().Draw(&triangle, Color::Green(), true, Color::Green(), true);
 
+	
 
 	Screen::Instance().RenderScreen();
 
@@ -57,3 +75,7 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+
+
+
+

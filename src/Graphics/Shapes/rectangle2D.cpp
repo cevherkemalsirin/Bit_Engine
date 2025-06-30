@@ -9,8 +9,8 @@ Rectangle2D::Rectangle2D():Rectangle2D(Vector2D::ZERO, Vector2D::ZERO)
 Rectangle2D::Rectangle2D(const Vector2D& startP, const Vector2D& endP)
 {
 	points_.push_back(startP);
-	points_.push_back(endP);
 	points_.push_back(Vector2D(endP.GetX(), startP.GetY()));
+	points_.push_back(endP);
 	points_.push_back(Vector2D(startP.GetX(), endP.GetY()));
 }
 
