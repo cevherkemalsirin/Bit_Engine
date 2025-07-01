@@ -10,6 +10,30 @@ ScreenBuffer::ScreenBuffer(const ScreenBuffer& buffer): surface_(nullptr)
     }
 }
 
+ScreenBuffer::ScreenBuffer(ScreenBuffer&& buffer) noexcept
+{
+	surface_ = buffer.surface_;
+	buffer.surface_ = nullptr;
+}
+
+ScreenBuffer& ScreenBuffer::operator=(ScreenBuffer&& buffer) noexcept
+{
+
+	if (this == &buffer)
+	{
+		return *this;
+	}
+
+	if (surface_)
+	{
+		SDL_FreeSurface(surface_);
+		surface_ = nullptr;
+	}
+	surface_ = buffer.surface_;
+	buffer.surface_ = nullptr;
+	return *this;
+}
+
 ScreenBuffer& ScreenBuffer::operator=(const ScreenBuffer& buffer)
 {
 	if (this == &buffer)

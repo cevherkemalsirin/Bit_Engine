@@ -11,8 +11,11 @@ class ScreenBuffer
 	uint32_t GetPixelIndex(uint32_t row, uint32_t column);
 public:
 	ScreenBuffer() : surface_(nullptr){}
-	explicit ScreenBuffer(const ScreenBuffer& buffer);
+    ScreenBuffer(const ScreenBuffer& buffer);
 	ScreenBuffer& operator=(const ScreenBuffer& buffer);
+	ScreenBuffer(ScreenBuffer&& buffer) noexcept;
+	ScreenBuffer& operator=(ScreenBuffer&& buffer) noexcept;
+
 	inline SDL_Surface* GetSurface() const { return surface_;}
 	~ScreenBuffer();
 
