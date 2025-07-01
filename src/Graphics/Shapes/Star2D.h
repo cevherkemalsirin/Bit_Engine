@@ -35,6 +35,8 @@ public:
 	inline unsigned int GetRadius() const { return centerSpikeDist_ + spikeLength_; }
 
 	static Star2D GenerateStar();
+	static std::vector<Star2D> GetSortedStars(unsigned int starNum);
+
 
 	//even/odd line crossing algorim to determine if a point is inside of the star
 	virtual bool ContainsPoint(const Vector2D& point) const override;

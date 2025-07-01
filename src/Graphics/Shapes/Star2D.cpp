@@ -2,8 +2,9 @@
 #include "Line2D.h"
 #include "Utils.h"
 #include "Rectangle2D.h"
-#include "Screen.h"
+#include "App.h"
 #include <random>
+#include <algorithm>
 
 Star2D::Star2D(const Vector2D& center, uint8_t spikeNum, float centerSpikeDist, float spikeLength) :
 	numberOfSpikes_(spikeNum), centerSpikeDist_(centerSpikeDist), 
@@ -20,10 +21,24 @@ Star2D Star2D::GenerateStar()
 	int spikes = math::GetRandom(3, 9);
 	float centerDist = math::GetRandom(10, 50);
 	float spikeLength = math::GetRandom(10, 50);
-	Vector2D center(math::GetRandom(0, Screen::Instance().Getwidth()),
-		math::GetRandom(0, Screen::Instance().GetHeight()));
+	Vector2D center(math::GetRandom(0, App::Instance().GetWidth()),
+		math::GetRandom(0, App::Instance().GetHeight()));
 
 	return Star2D(center, spikes, centerDist, spikeLength);
+}
+
+std::vector<Star2D> Star2D::GetSortedStars(unsigned int starNum)
+{
+		std::vector<Star2D> stars;
+		for (unsigned int i = 0; i < starNum; ++i)
+		{
+			stars.push_back(Star2D::GenerateStar());
+		}
+		//sort the stars by radius
+		std::sort(stars.begin(), stars.end(), [](const Star2D& a, const Star2D& b) {
+			return a.GetRadius() < b.GetRadius();
+			});
+		return stars;
 }
 
 void Star2D::CreateStar()

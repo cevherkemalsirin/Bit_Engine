@@ -28,7 +28,7 @@ Screen::~Screen()
 	SDL_Quit();
 }
 
-void Screen::Init(uint32_t w, uint32_t h, uint8_t zoom)
+SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint8_t zoom)
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
 	{
@@ -55,7 +55,7 @@ void Screen::Init(uint32_t w, uint32_t h, uint8_t zoom)
 	//nearest used for pixel art style games when scaling, Linear is used for modern
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
 	SDL_RenderSetLogicalSize(renderer_, width_, height_);
-	//return window_;
+	return window_;
 }
 
 void Screen::RenderScreen()

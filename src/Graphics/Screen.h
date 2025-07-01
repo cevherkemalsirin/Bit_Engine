@@ -30,7 +30,7 @@ public:
 	inline uint32_t GetHeight() const { return height_;}
 	inline uint32_t Getwidth() const { return width_;}
 	inline void SetClearColor(const Color& color) { clearColor_ = color;}
-	void Init(uint32_t w, uint32_t h, uint8_t zoom = 3);
+	SDL_Window* Init(uint32_t w, uint32_t h, uint8_t zoom = 3);
 	void RenderScreen();
 
 	void Draw(int x, int y, const Color& color = Color::White());
@@ -45,10 +45,7 @@ public:
 	void Draw(const Shape* shape, const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool DrawBoundingBox = false);
 	void Draw(const Circle2D& circle, float drawingAngle ,const Color& color = Color::White(), bool fill = false, const Color& fillColor = Color::White(), bool frawBoundingBox = false);
 
-	static Screen& Instance() {
-		static Screen instance;
-		return instance;
-	}
+
 private:
 	Screen(const Screen&) = delete;
 	Screen& operator=(const Screen&) = delete;
